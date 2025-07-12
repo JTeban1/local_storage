@@ -56,6 +56,7 @@ A web application for user registration with data persistence using localStorage
 
 ### 3. **Actions & Statistics Module** (`actions-statistics.js`)
 - **Statistics Class**: Tracks user interactions and manages action buttons
+- **Data Persistence**: Uses localStorage for data storage
   - **Interaction Counters**: Register, Clear, and Total interactions
   - **Action Buttons**: Clear all data and refresh table functionality
   - **Visual Feedback**: Button animations and user notifications
