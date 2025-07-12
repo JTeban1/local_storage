@@ -1,7 +1,7 @@
 class Statistics {
     /**
-     * Initialize the statistics manager with DOM elements and counters
-     * Sets up event listeners and prepares interaction tracking
+     * Initialize the statistics manager with DOM elements, counters, and localStorage
+     * Sets up event listeners, loads persistent data, and prepares interaction tracking
      */
     constructor() {
         this.clearDataBtn = document.getElementById('clearDataBtn');
@@ -10,6 +10,9 @@ class Statistics {
         this.registerCounter = null;
         this.clearCounter = null;
         this.totalCounter = null;
+
+        // Storage key for persistent counters
+        this.storageKey = 'appStatistics';
 
         this.counters = {
             register: 0,
@@ -21,12 +24,45 @@ class Statistics {
     }
 
     /**
-     * Initialize counter elements and event listeners
+     * Initialize counter elements, event listeners, and load persistent data
      */
     init() {
+        this.loadFromStorage();
         this.setupCounterElements();
         this.setupEventListeners();
         this.updateDisplay();
+    }
+
+    /**
+     * Load counter data from localStorage
+     */
+    loadFromStorage() {
+        const savedData = localStorage.getItem(this.storageKey);
+        
+        if (savedData) {
+            try {
+                const parsedData = JSON.parse(savedData);
+                this.counters = {
+                    register: parsedData.register || 0,
+                    clear: parsedData.clear || 0,
+                    total: parsedData.total || 0
+                };
+            } catch (error) {
+                console.warn('Failed to load statistics from localStorage:', error);
+                // Keep default counters if parsing fails
+            }
+        }
+    }
+
+    /**
+     * Save counter data to localStorage
+     */
+    saveToStorage() {
+        try {
+            localStorage.setItem(this.storageKey, JSON.stringify(this.counters));
+        } catch (error) {
+            console.warn('Failed to save statistics to localStorage:', error);
+        }
     }
 
     /**
@@ -96,21 +132,23 @@ class Statistics {
     }
 
     /**
-     * Increment register counter
+     * Increment register counter and save to localStorage
      */
     incrementRegister() {
         this.counters.register++;
         this.counters.total++;
         this.updateDisplay();
+        this.saveToStorage();
     }
 
     /**
-     * Increment clear counter
+     * Increment clear counter and save to localStorage
      */
     incrementClear() {
         this.counters.clear++;
         this.counters.total++;
         this.updateDisplay();
+        this.saveToStorage();
     }
 
     /**
@@ -164,6 +202,35 @@ class Statistics {
         setTimeout(() => {
             button.classList.remove('is-loading');
         }, 500);
+    }
+
+    /**
+     * Reset all counters to zero and save to localStorage
+     */
+    resetCounters() {
+        this.counters = {
+            register: 0,
+            clear: 0,
+            total: 0
+        };
+        this.updateDisplay();
+        this.saveToStorage();
+    }
+
+    /**
+     * Get current statistics (useful for debugging or exporting)
+     * @returns {Object} Current counter values
+     */
+    getStatistics() {
+        return { ...this.counters };
+    }
+
+    /**
+     * Clear statistics data from localStorage (complete reset)
+     */
+    clearStorage() {
+        localStorage.removeItem(this.storageKey);
+        this.resetCounters();
     }
 }
 
