@@ -1,0 +1,242 @@
+/* Custom CSS for Registration Form - Bulma Version */
+
+/* Body and general styling */
+body {
+    background: white;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Card styling enhancements */
+.card {
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.6s ease-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+    padding: 1.5rem;
+    font-weight: 600;
+}
+
+.card-content {
+    padding: 2rem;
+}
+
+.card-header-title {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Form styling */
+.input {
+    border-radius: 10px;
+    border: 2px solid #dbdbdb;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.input:focus {
+    border-color: #6c757d;
+    box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.25);
+    transform: scale(1.02);
+}
+
+.input:hover {
+    border-color: #6c757d;
+}
+
+.label {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 0.5rem;
+}
+
+/* Button styling */
+.button {
+    border-radius: 10px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.button:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.25);
+}
+
+/* Button variants */
+.button.is-primary {
+    background: #6c757d;
+    border-color: #6c757d;
+    color: white;
+}
+
+.button.is-primary:hover {
+    background: #5a6268;
+    border-color: #5a6268;
+}
+
+.button.is-light, .button.is-dark {
+    background: transparent;
+    border: 2px solid;
+}
+
+.button.is-light {
+    border-color: #6c757d;
+    color: #6c757d;
+}
+
+.button.is-light:hover {
+    background: #6c757d;
+    color: white;
+}
+
+.button.is-dark {
+    border-color: #343a40;
+    color: #343a40;
+}
+
+.button.is-dark:hover {
+    background: #343a40;
+    color: white;
+}
+
+/* Table styling */
+.table {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.table thead tr {
+    background: linear-gradient(45deg, #2d3748, #1a202c);
+}
+
+.table thead th {
+    color: #ffffff !important;
+    font-weight: 600;
+}
+
+.table.is-striped tbody tr:nth-child(odd) {
+    background-color: rgba(108, 117, 125, 0.05);
+}
+
+.table.is-hoverable tbody tr:hover {
+    background-color: rgba(108, 117, 125, 0.1);
+    transform: scale(1.01);
+    transition: all 0.3s ease;
+}
+
+/* Actions & Counter Layout */
+.buttons-section {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.buttons.is-centered {
+    justify-content: center;
+}
+
+.counter-section {
+    background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.notification {
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.notification:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.notification.is-primary, .notification.is-grey {
+    background-color: #6c757d;
+    color: white;
+}
+
+.notification.is-dark {
+    background-color: #343a40;
+    color: white;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #6c757d;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #5a6268;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Custom spacing classes */
+.mt-5 { margin-top: 2.5rem; }
+.mt-6 { margin-top: 3rem; }
+.mb-6 { margin-bottom: 3rem; }
+.mr-2 { margin-right: 0.5rem; }
+.mr-3 { margin-right: 1rem; }
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-4 { margin-bottom: 1.5rem; }
+.mt-4 { margin-top: 1.5rem; }
+.mt-2 { margin-top: 0.5rem; }
+
+/* Utility classes */
+.has-text-grey {
+    color: #6c757d !important;
+    font-style: italic;
+}
+
+.fas {
+    margin-right: 0.5rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .card-content { padding: 1.5rem; }
+    .counter-section { margin-top: 1rem; }
+    .button { margin-bottom: 0.5rem; }
+}
